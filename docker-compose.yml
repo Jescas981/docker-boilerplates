@@ -21,3 +21,19 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     restart: always
+  
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '9596'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '9596'
+      MYSQL_DATABASE: 'app'
+    ports:
+      - "3306:3306"
+    volumes:
+      - app:/var/lib/mysql
+    restart: always
+  
+volumes:
+  app: {}
